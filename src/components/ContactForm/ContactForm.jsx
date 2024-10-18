@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 
 const ContactForm = () => {
   const initialValues = {
@@ -17,8 +17,7 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    const newValue = { id: nanoid(), name: values.name, number: values.number };
-    dispatch(addContact(newValue));
+    dispatch(addContact(values));
     actions.resetForm();
   };
 
